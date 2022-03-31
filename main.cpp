@@ -24,10 +24,44 @@ class MyClassVector1
       } 
 };
 
+class MyClassVector2
+{
+    vector<int> vec;
+ 
+public:
+    MyClassVector2 (vector<int> v) : vec(v) //parameterized constructor 2
+
+    {
+    }
+    void print()
+    {
+        /// print the value of vector
+        for (int i = 0; i < vec.size(); i++)
+            cout << vec[i] << " ";
+    }
+};
+
+class MyClassVector3
+{
+    vector<int>& vec;
+ 
+public:
+    MyClassVector3 (vector<int>& arr)  //parameterized constructor 3
+        : vec(arr)
+    {
+    }
+    void print()
+    {
+        /// print the value of vector
+        for (int i = 0; i < vec.size(); i++)
+            cout << vec[i] << " ";
+    }
+};
+
 int main() 
 {
-  
-    vector<double> vd = {0.5, 1.5}; // vector double 
+//**** vector double ****
+    vector<double> vd = {0.5, 1.5}; 
     
     vd.push_back(1.0);
     vd.push_back(2.2);
@@ -44,8 +78,9 @@ int main()
    {
      cout << vd[i] << endl; 
    }
-
-    vector<int> vi = {1, 2}; // vector integer
+  
+//**** vector integer *****
+    vector<int> vi = {1, 2};
 
     vi.push_back(3);
     vi.push_back(1);
@@ -56,8 +91,9 @@ int main()
       {
         cout << vals << endl;
       }
-
-    vector<string> vs = {"Genghis","Tokugawa"}; // vector string
+  
+//**** vector string ****
+    vector<string> vs = {"Genghis","Tokugawa"}; 
 
     vs.push_back("Alexander");
     vs.push_back("Hannibal");
@@ -69,7 +105,7 @@ int main()
         cout << vals << endl;
       }
 
-  //vectors as class members from geeksforgeeks.com
+  //**** vectors as class members from geeksforgeeks.com ****
   cout << "\nVector_as_Class_Member" << endl; 
     vector<int> vec; 
         for (int i = 1; i <= 5; i++) 
@@ -77,6 +113,11 @@ int main()
         MyClassVector1 obj(vec); 
         obj.print(); 
 
+  //**** stl iterators ***
+  vector< int > vint (3);
+  vint[0] = 10;
+  vint[1]
+
 
 return 0;
-  }
+}
