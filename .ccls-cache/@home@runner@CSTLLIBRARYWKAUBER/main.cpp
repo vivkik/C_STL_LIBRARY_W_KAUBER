@@ -4,6 +4,7 @@
 #include <string>
 #include <cassert>
 #include <stack>
+#include <set> 
 
 using namespace std; 
 
@@ -150,7 +151,26 @@ int main()
   st.pop(); // removing an element
   assert ( st.empty() == true );
 
+//**** std::set - a container holding unique elements that are sorted ****
 
+  set< int > iset; // a set of unique int numbers
+  iset.insert(11); // add set with values
+  iset.insert(-11);
+  iset.insert(55);
+  iset.insert(22);
+  iset.insert(22);
+
+    if( iset.find( 55 ) != iset.end())
+    {
+      iset.insert(55);
+    }
+    
+    assert( iset.size() == 4 );
+    set <int> :: iterator ist; 
+    for ( ist = iset.begin(); ist != iset.end(); ist++)
+      {
+        cout << " " << *ist;
+      }
 
 return 0;
 }
