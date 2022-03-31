@@ -5,8 +5,12 @@
 #include <cassert>
 #include <stack>
 #include <set> 
+#include <utility>
 
 using namespace std; 
+
+typedef map<string, int> MapT;
+typedef MapT::const_interator MapIterT;
 
 //Credit https://www.geeksforgeeks.org/passing-vector-constructor-c/ clarifications added
 class MyClassVector1 
@@ -160,7 +164,7 @@ int main()
   iset.insert(22);
   iset.insert(22);
 
-    if( iset.find( 55 ) != iset.end())
+    if( iset.find( 55 ) != iset.end()) //check if the value is stored
     {
       iset.insert(55);
     }
@@ -172,5 +176,21 @@ int main()
         cout << " " << *ist;
       }
 
+//**** std::pair structure- a container storing 2 elements ****
+
+  pair< string, string > strstr;
+  strstr.first= "Sup" ;
+  strstr.second= "Earth";
+
+  pair< int, string> intstr;
+  intstr.first = 1; 
+  intstr.second = "Juan";
+
+  pair< string, int > strint("Dos", 2);
+  assert( strint.first == "Dos");
+  assert( strint.second == 2);
+
+//**** std::
+  
 return 0;
 }
