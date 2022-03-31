@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm> 
 #include <string>
+#include <cassert>
+#include <stack>
+
 using namespace std; 
 
 //Credit https://www.geeksforgeeks.org/passing-vector-constructor-c/ clarifications added
@@ -113,10 +116,40 @@ int main()
         MyClassVector1 obj(vec); 
         obj.print(); 
 
-  //**** stl iterators ***
-  vector< int > vint (3);
+//**** stl iterators ***
+  vector< int > vint (10);
   vint[0] = 10;
-  vint[1]
+  vint[1] = 20;
+  vint[2] = 30;
+  vint[3] = 44;
+  vint[4] = 55;
+  vint[5] = 66;
+  vint[6] = 77;
+  vint[7] = 88; 
+  vint[8] = 99;
+  vint[9] = 101;
+
+  cout << "\nVector Elements from Iterator: "<<endl;
+  vector<int> :: iterator it;//printing elements of the vector
+  for (it = vint.begin(); it!=vint.end();++it)
+    {
+      cout <<" " << *it;
+    }
+
+//**** std::stack - can only insert/extract from top  ****
+
+  stack< int > st;
+
+  st.push( 200 ); // push the number on the stack
+  assert( st.size() == 1 ); // verify one element is on the stack
+  assert( st.top() == 200 ); // verify element value
+
+  st.top() = 333; // assigning a new value
+  assert( st.top() == 333 );
+
+  st.pop(); // removing an element
+  assert ( st.empty() == true );
+
 
 
 return 0;

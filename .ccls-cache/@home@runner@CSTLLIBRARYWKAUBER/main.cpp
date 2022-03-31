@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm> 
 #include <string>
+#include <cassert>
+#include <stack>
+
 using namespace std; 
 
 //Credit https://www.geeksforgeeks.org/passing-vector-constructor-c/ clarifications added
@@ -29,8 +32,8 @@ class MyClassVector2
     vector<int> vec;
  
 public:
-    MyClass(vector<int> v) : vec(v)
-{
+    MyClassVector2 (vector<int> v) : vec(v) //parameterized constructor 2
+
     {
     }
     void print()
@@ -41,12 +44,27 @@ public:
     }
 };
 
-
+class MyClassVector3
+{
+    vector<int>& vec;
+ 
+public:
+    MyClassVector3 (vector<int>& arr)  //parameterized constructor 3
+        : vec(arr)
+    {
+    }
+    void print()
+    {
+        /// print the value of vector
+        for (int i = 0; i < vec.size(); i++)
+            cout << vec[i] << " ";
+    }
+};
 
 int main() 
 {
-  
-    vector<double> vd = {0.5, 1.5}; // vector double 
+//**** vector double ****
+    vector<double> vd = {0.5, 1.5}; 
     
     vd.push_back(1.0);
     vd.push_back(2.2);
@@ -63,8 +81,9 @@ int main()
    {
      cout << vd[i] << endl; 
    }
-
-    vector<int> vi = {1, 2}; // vector integer
+  
+//**** vector integer *****
+    vector<int> vi = {1, 2};
 
     vi.push_back(3);
     vi.push_back(1);
@@ -75,8 +94,9 @@ int main()
       {
         cout << vals << endl;
       }
-
-    vector<string> vs = {"Genghis","Tokugawa"}; // vector string
+  
+//**** vector string ****
+    vector<string> vs = {"Genghis","Tokugawa"}; 
 
     vs.push_back("Alexander");
     vs.push_back("Hannibal");
@@ -88,7 +108,7 @@ int main()
         cout << vals << endl;
       }
 
-  //vectors as class members from geeksforgeeks.com
+  //**** vectors as class members from geeksforgeeks.com ****
   cout << "\nVector_as_Class_Member" << endl; 
     vector<int> vec; 
         for (int i = 1; i <= 5; i++) 
@@ -96,8 +116,41 @@ int main()
         MyClassVector1 obj(vec); 
         obj.print(); 
 
-  //
+//**** stl iterators ***
+  vector< int > vint (10);
+  vint[0] = 10;
+  vint[1] = 20;
+  vint[2] = 30;
+  vint[3] = 44;
+  vint[4] = 55;
+  vint[5] = 66;
+  vint[6] = 77;
+  vint[7] = 88; 
+  vint[8] = 99;
+  vint[9] = 101;
+
+  cout << "\nVector Elements from Iterator: "<<endl;
+  vector<int> :: iterator it;//printing elements of the vector
+  for (it = vint.begin(); it!=vint.end();++it)
+    {
+      cout <<" " << *it;
+    }
+
+//**** std::stack - can only insert/extract from top  ****
+
+  stack< int > st;
+
+  st.push( 200 ); // push the number on the stack
+  assert( st.size() == 1 ); // verify one element is on the stack
+  assert( st.top() == 200 ); // verify element value
+
+  st.top() = 333; // assigning a new value
+  assert( st.top() == 333 );
+
+  st.pop(); // removing an element
+  assert ( st.empty() == true );
+
 
 
 return 0;
-  }
+}
