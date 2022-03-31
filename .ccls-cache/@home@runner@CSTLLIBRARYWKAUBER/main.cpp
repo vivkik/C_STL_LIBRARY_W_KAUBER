@@ -5,8 +5,13 @@
 #include <cassert>
 #include <stack>
 #include <set> 
+#include <utility>
+#include <map>
 
 using namespace std; 
+
+typedef map<string, int> MapT;
+typedef MapT::const_iterator MapIterT;
 
 //Credit https://www.geeksforgeeks.org/passing-vector-constructor-c/ clarifications added
 class MyClassVector1 
@@ -61,6 +66,7 @@ public:
             cout << vec[i] << " ";
     }
 };
+
 
 int main() 
 {
@@ -152,7 +158,7 @@ int main()
   assert ( st.empty() == true );
 
 //**** std::set - a container holding unique elements that are sorted ****
-
+  cout<< "\n Set Container Elements: \n";
   set< int > iset; // a set of unique int numbers
   iset.insert(11); // add set with values
   iset.insert(-11);
@@ -160,7 +166,7 @@ int main()
   iset.insert(22);
   iset.insert(22);
 
-    if( iset.find( 55 ) != iset.end())
+    if( iset.find( 55 ) != iset.end()) //check if the value is stored
     {
       iset.insert(55);
     }
@@ -172,5 +178,67 @@ int main()
         cout << " " << *ist;
       }
 
+//**** std::pair structure- a container storing 2 elements ****
+
+  pair< string, string > strstr;
+  strstr.first= "Sup" ;
+  strstr.second= "Earth";
+
+  pair< int, string> intstr;
+  intstr.first = 1; 
+  intstr.second = "Juan";
+
+  pair< string, int > strint("Dos", 2);
+  assert( strint.first == "Dos");
+  assert( strint.second == 2);
+
+//**** map::insert ****
+  MapT amap;
+  pair< MapIterT, bool> result = amap.insert( make_pair("Gus", 3));
+
+  assert( result.second == true );
+  assert( result.first->second == 3);
+
+  result= amap.insert( make_pair("Gus", 21));
+  assert( result.second == false);
+  assert( result.first->second ==3);
+
+
+//**** map summary ****
+  
+  map< string, string > phone_book;         
+  phone_book[ "411" ] = "Directory";         
+  phone_book[ "911" ] = "Emergency";         
+  phone_book[ "508-678-2811" ] = "BCC";
+ 
+    if ( phone_book.find( "411" ) != phone_book.end() ) 
+      {             
+      phone_book.insert(make_pair(string( "411" ), string("Directory")));
+      }
+
+    assert( phone_book.size() == 3 );        
+    map< string, string >::const_iterator imt;
+      for ( imt = phone_book.begin(); imt != phone_book.end(); ++imt )
+        {
+           cout << " " << imt->first << " " << imt->second<< endl;        
+        }
+
+//**** sort algorithm ****
+
+int arr[100];
+sort (arr, arr+100);
+vector a1;
+sort( a1.begin(), a1.end());
+
+  
+ //**** predicate algorithm ****
+
+  bool less_than_7(int value)
+  {
+    return value < 7;
+  }
+  vector<int> b1;
+  int count_less = std::count_if( b1.begin(), b1.end(), less_than_7);
+    
 return 0;
 }

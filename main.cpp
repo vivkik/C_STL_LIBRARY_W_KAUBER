@@ -67,6 +67,7 @@ public:
     }
 };
 
+
 int main() 
 {
 //**** vector double ****
@@ -221,9 +222,23 @@ int main()
         {
            cout << " " << imt->first << " " << imt->second<< endl;        
         }
-        
-       
-              
+
+//**** sort algorithm ****
+
+int arr[100];
+sort (arr, arr+100);
+vector a1;
+sort( a1.begin(), a1.end());
+
+  
+ //**** predicate algorithm ****
+
+  bool less_than_7(int value)
+  {
+    return value < 7;
+  }
+  vector<int> b1;
+  int count_less = std::count_if( b1.begin(), b1.end(), less_than_7);
     
 return 0;
 }
