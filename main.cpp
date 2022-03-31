@@ -201,6 +201,29 @@ int main()
   result= amap.insert( make_pair("Gus", 21));
   assert( result.second == false);
   assert( result.first->second ==3);
+
+
+//**** map summary ****
   
+  map< string, string > phone_book;         
+  phone_book[ "411" ] = "Directory";         
+  phone_book[ "911" ] = "Emergency";         
+  phone_book[ "508-678-2811" ] = "BCC";
+ 
+    if ( phone_book.find( "411" ) != phone_book.end() ) 
+      {             
+      phone_book.insert(make_pair(string( "411" ), string("Directory")));
+      }
+
+    assert( phone_book.size() == 3 );        
+    map< string, string >::const_iterator imt;
+      for ( imt = phone_book.begin(); imt != phone_book.end(); ++imt )
+        {
+           cout << " " << imt->first << " " << imt->second<< endl;        
+        }
+        
+       
+              
+    
 return 0;
 }
