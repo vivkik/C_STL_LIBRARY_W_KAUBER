@@ -6,11 +6,12 @@
 #include <stack>
 #include <set> 
 #include <utility>
+#include <map>
 
 using namespace std; 
 
 typedef map<string, int> MapT;
-typedef MapT::const_interator MapIterT;
+typedef MapT::const_iterator MapIterT;
 
 //Credit https://www.geeksforgeeks.org/passing-vector-constructor-c/ clarifications added
 class MyClassVector1 
@@ -190,7 +191,16 @@ int main()
   assert( strint.first == "Dos");
   assert( strint.second == 2);
 
-//**** std::
+//**** map::insert ****
+  MapT amap;
+  pair< MapIterT, bool> result = amap.insert( make_pair("Gus", 3));
+
+  assert( result.second == true );
+  assert( result.first->second == 3);
+
+  result= amap.insert( make_pair("Gus", 21));
+  assert( result.second == false);
+  assert( result.first->second ==3);
   
 return 0;
 }
